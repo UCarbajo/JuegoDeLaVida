@@ -3,10 +3,10 @@ package juegoDeLaVida;
 public class Main {
 
 	public static void main(String[] args) {
-		int[][] tabla = { { 0, 0, 0, 0, 0, 0 }, 
-					      { 0, 1, 1, 0, 0, 0,}, 
-					      { 0, 0, 1, 1, 0, 0 }, 
-					      { 0, 0, 1, 0, 0, 0 },
+		int[][] tabla = { { 0, 1, 1, 1, 0, 0 }, 
+					      { 1, 1, 0, 1, 1, 0,}, 
+					      { 1, 1, 0, 0, 1, 0 }, 
+					      { 0, 0, 1, 1, 0, 0 },
 					      { 0, 0, 0, 0, 0, 0 }, 
 					      { 0, 0, 0, 0, 0, 0 } };
 
@@ -14,7 +14,10 @@ public class Main {
 		
 		for (int i = 0; i < tabla.length; i++) {
 			for (int j = 0; j < tabla.length; j++) {
-				System.out.print(tabla[i][j] + " ");
+				if (tabla[i][j] == 0)
+					System.out.print(". ");
+				else 
+					System.out.print("* ");
 			}
 			System.out.println();
 		}
@@ -22,14 +25,16 @@ public class Main {
 		for (int fila = 0; fila < tabla.length; fila++) {
 			for (int columna = 0; columna < tabla.length; columna++) {
 				int suma = 0;
+				
 				for (int filaI = -1; filaI <= 1; filaI++) {
 					for (int columnaJ = -1; columnaJ <= 1; columnaJ++) {
 						if ((fila+filaI>=0 && fila+filaI<6) && (columna+columnaJ>=0 && columna+columnaJ<6))
 	                        suma += tabla[fila + filaI][columna + columnaJ];
 
 					}
-					suma -= tabla[fila][columna];
 				}
+				suma -= tabla[fila][columna];
+				
 				if ((tabla[fila][columna] == 1 || tabla[fila][columna] == 0 ) && (suma < 2 || suma > 3)) {
 					aux[fila][columna] = 0;
 				}else if ((tabla[fila][columna] == 1) && (suma == 2 || suma == 3)) {
@@ -43,7 +48,10 @@ public class Main {
 		System.out.println();
 		for (int i = 0; i < aux.length; i++) {
 			for (int j = 0; j < aux.length; j++) {
-				System.out.print(aux[i][j] + " ");
+				if (aux[i][j] == 0)
+					System.out.print(". ");
+				else 
+					System.out.print("* ");
 			}
 			System.out.println();
 		}
