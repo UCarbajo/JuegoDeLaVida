@@ -47,30 +47,31 @@ public class Main {
                         	//Solucion al problema de que nos salgamos de la matriz, ya que la matriz no acepta numeros negativos.
                         	//Si el if() sale false, ignora la celda no existente y continua. Si el valor es true, se suma a la variable
                         	//suma el valor de la celda y lo acumula, dandondos el total de vecinos que tiene la celda activa.
-                            if ((fila + filaI >= 0 && fila + filaI < 10)
-                                    && (columna + columnaJ >= 0 && columna + columnaJ < 10))
+                            if ((fila + filaI >= 0 && fila + filaI < tabla.length) && (columna + columnaJ >= 0 && columna + columnaJ < tabla.length))
                                 suma += tabla[fila + filaI][columna + columnaJ];
-
                         }
                     }
                     //Como hemos sumado todas las celdas, incluida la celda activa, tenemos que restarle a la variable suma, 
                     //el contenido de la celda activa
                     suma -= tabla[fila][columna];
                     
-                    //Los siguiente son las reglas del juego.
-                    	//Esto indica que si la celda activa esta viva y el resultado de sus vecinos es que tiene menos de 2 o mas de 3
-                    	//muere y se combierte en una celula muerta
-                    if ((tabla[fila][columna] == 1) && (suma < 2 || suma > 3)) {
-                        aux[fila][columna] = 0;
-                        //Esto indica que que si la celda activa esta viva y tiene entre 2 y 3 vecinos, la celula sigue viva.
-                    } else if ((tabla[fila][columna] == 1) && (suma == 2 || suma == 3)) {
-                        aux[fila][columna] = 1;
-                        //esto indica que si una celda tiene justo 3 vecinos la celula muerta, vive.
-                    } else if (suma == 3)
-                        aux[fila][columna] = 1;
-                    {
-
-                    }
+                    //Los siguiente son las reglas del juego. Dependiendo si la celta esta viva o muerta, tiene diferentes reglas.
+                    //Usamos un switch para darle las reglas a los 2 tipos de casos.
+                    switch (tabla[fila][columna]) {
+                    	//En el caso de que la celda este viva, hay 2 opciones. Si tiene menos de 2 o mas de 3 celdas activas, la celula muere.
+                    	//Si tiene 2 o 3 celulas vivas alrededor la celula sigue viva.
+                    	case 1:
+                    		if (suma < 2 || suma > 3) {
+        					aux[fila][columna] = 0; 
+                    		}else if(suma == 2 || suma == 3) {
+        					aux[fila][columna] = 1;
+                    		}
+                    	//En el caso de la celula muerta, solo puede vivir si tiene 3 celulas vivas alrededor.
+                    	case 0:
+                    		if (suma == 3) {
+        					aux[fila][columna] = 1;
+        				}
+        		}
                 }
             }
             
