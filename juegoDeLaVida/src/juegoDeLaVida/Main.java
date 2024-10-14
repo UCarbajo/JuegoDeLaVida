@@ -47,6 +47,7 @@ public class Main {
                         	//Solucion al problema de que nos salgamos de la matriz, ya que la matriz no acepta numeros negativos.
                         	//Si el if() sale false, ignora la celda no existente y continua. Si el valor es true, se suma a la variable
                         	//suma el valor de la celda y lo acumula, dandondos el total de vecinos que tiene la celda activa.
+				//Condicional
                             if ((fila + filaI >= 0 && fila + filaI < tabla.length) && (columna + columnaJ >= 0 && columna + columnaJ < tabla.length))
                                 suma += tabla[fila + filaI][columna + columnaJ];
                         }
