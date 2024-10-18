@@ -1,0 +1,9 @@
+Pistas:
+	Límites de los bucles: Hay un error relacionado con los índices en varios bucles. Esto puede provocar que el programa intente acceder a posiciones de la matriz que no existen.
+	Inicialización de la temperatura máxima y mínima: La variable maxTemp está inicializada en 0, lo cual puede no ser correcto si todas las temperaturas resultan ser negativas o bajas.
+	Cálculo del promedio: El programa debería calcular el promedio de temperaturas de manera correcta, pero puede haber una división incorrecta o errores en el manejo del total de elementos.
+
+Tu tarea:
+	Identifica todos los errores en el código.
+	Corrige los errores.
+	Verifica que el programa funcione correctamente después de los cambios.
